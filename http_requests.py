@@ -33,3 +33,24 @@ class JSONPlaceholder:
             "content": response.content[:500]
         }
         return data
+    
+    def update_user(self, userId, title, body):
+        data = {
+            "title": title,
+            "body": body
+        }
+        response = requests.put(f'{self.base_url}/{userId}', data)
+
+        data = {
+            "status_code": response.status_code,
+            "headers": response.headers,
+            "content": response.content[:500]
+        }
+        return data
+
+    def delete_user(self, userId):
+        response = requests.delete(f'{self.base_url}/{userId}')
+        data = {
+            "status_code": response.status_code,
+        }
+        return data
