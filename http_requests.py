@@ -14,16 +14,6 @@ class JSONPlaceholder:
         }
         return data
     
-    def get_request_by_userid(self, user_id):
-        response = requests.get(f'{self.base_url}?userId={user_id}')
-        data = {
-            "status_code": response.status_code,
-            "headers": response.headers,
-            # First 500 characters of the content
-            "content": response.content[:500]
-        }
-        return data
-    
     def post_request(self, data):
         response = requests.post(self.base_url, data=data)
         data = {
